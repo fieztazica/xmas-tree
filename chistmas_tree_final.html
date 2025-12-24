@@ -171,7 +171,7 @@
     <div id="ui-layer">
         <h1>Merry Christmas</h1>
         
-        <div class="controls-wrapper">
+        <div class="controls-wrapper ui-hidden">
             <div class="btn-group">
                 <label class="upload-btn">
                     Select Folder
@@ -184,7 +184,9 @@
                 </label>
             </div>
             <div class="hint-text">Use "Select Folder" to load all photos at once</div>
-            <div class="hint-text" style="opacity: 0.7; font-size: 8px;">Or put photos in "./images/" (1.jpg - 30.jpg)</div>
+            <div class="hint-text" style="opacity: 0.7; font-size: 8px;">
+                Or put photos in "./images/" (1.jpg - 30.jpg)
+            </div>
         </div>
     </div>
 
@@ -221,12 +223,8 @@
             
             preload: {
                 autoScanLocal: true,
-                scanCount: 200, 
+                scanCount: 30, 
                 images: [
-                    'https://images.unsplash.com/photo-1543589077-47d81606c1bf?q=80&w=600', 
-                    'https://images.unsplash.com/photo-1576919228236-a097c32a5cd4?q=80&w=600',
-                    'https://images.unsplash.com/photo-1512389142860-9c449e58a543?q=80&w=600', 
-                    'https://images.unsplash.com/photo-1482638588057-dce9509db949?q=80&w=600'
                 ]
             }
         };
@@ -280,8 +278,8 @@
 
             if (CONFIG.preload.autoScanLocal) {
                 for (let i = 1; i <= CONFIG.preload.scanCount; i++) {
-                    const pathJpg = `./images/(${i}).jpg`;
-                    const pathPng = `./images/(${i}).png`;
+                    const pathJpg = `./images/${i}.jpg`;
+                    const pathPng = `./images/${i}.png`;
                     loader.load(pathJpg, 
                         (t) => { t.colorSpace = THREE.SRGBColorSpace; addPhotoToScene(t); },
                         undefined,
